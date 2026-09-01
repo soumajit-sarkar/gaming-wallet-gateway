@@ -1,9 +1,10 @@
 from fastapi import FastAPI
+from app.core.config import settings
 
 app = FastAPI(
     title="Gaming Wallet Gateway",
     description="Sanitized FastAPI reference implementation of a high-throughput gaming wallet gateway.",
-    version="1.0.0",
+    version=settings.app_version
 )
 
 
