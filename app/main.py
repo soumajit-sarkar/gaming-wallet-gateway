@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.api.router import api_router
 from app.core.config import settings
 
 app = FastAPI(
@@ -8,6 +9,4 @@ app = FastAPI(
 )
 
 
-@app.get("/health")
-async def health_check() -> dict[str, str]:
-    return {"status": "ok"}
+app.include_router(api_router)
