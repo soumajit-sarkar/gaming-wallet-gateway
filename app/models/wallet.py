@@ -1,7 +1,13 @@
+
 from datetime import datetime
 from decimal import Decimal
 
-from sqlalchemy import ForeignKey, Numeric, String, UniqueConstraint
+from sqlalchemy import (
+    ForeignKey,
+    Numeric,
+    String,
+    UniqueConstraint,
+)
 from sqlalchemy.dialects.mysql import BIGINT, DATETIME
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -53,6 +59,7 @@ class Wallet(Base):
     __table_args__ = (
         UniqueConstraint(
             "player_id",
-            name="uq_wallets_player_id",
+            "currency",
+            name="uq_wallets_player_currency",
         ),
     )
