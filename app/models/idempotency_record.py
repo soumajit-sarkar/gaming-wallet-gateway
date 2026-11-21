@@ -1,6 +1,12 @@
+
 from datetime import datetime
 
-from sqlalchemy import ForeignKey, Index, String, UniqueConstraint
+from sqlalchemy import (
+    CheckConstraint,
+    ForeignKey,
+    String,
+    UniqueConstraint,
+)
 from sqlalchemy.dialects.mysql import BIGINT, CHAR, DATETIME, JSON
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -59,8 +65,8 @@ class IdempotencyRecord(Base):
             "idempotency_key",
             name="uq_idempotency_records_client_key",
         ),
-        Index(
-            "ix_idempotency_records_client_id",
-            "client_id",
+        CheckConstraint(
+            "status IN ('PROCESSING', 'COMPLETED', 'FAILED')",
+            name="ck_idempotency_records_status_valid",
         ),
     )

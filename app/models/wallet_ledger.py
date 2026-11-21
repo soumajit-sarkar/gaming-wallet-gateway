@@ -1,7 +1,7 @@
 from datetime import datetime
 from decimal import Decimal
 
-from sqlalchemy import ForeignKey, Index, Numeric, String, UniqueConstraint
+from sqlalchemy import CheckConstraint, ForeignKey, Index, Numeric, String, UniqueConstraint
 from sqlalchemy.dialects.mysql import BIGINT, DATETIME
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -55,6 +55,12 @@ class WalletLedger(Base):
     )
 
     __table_args__ = (
+        CheckConstraint("amount > 0", name="ck_wallet_ledger_amount_positive"),
+        CheckConstraint(
+            "(entry_type = 'DEBIT' AND balance_after = balance_before - amount) "
+            "OR (entry_type = 'CREDIT' AND balance_after = balance_before + amount)",
+            name="ck_wallet_ledger_balance_equation",
+        ),
         UniqueConstraint(
             "transaction_id",
             name="uq_wallet_ledger_transaction_id",

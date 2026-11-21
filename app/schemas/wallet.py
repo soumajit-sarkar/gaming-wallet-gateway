@@ -7,7 +7,7 @@ from app.schemas.common import APIModel, CurrencyCode
 
 
 class WalletCreateRequest(APIModel):
-    player_id: int = Field(gt=0)
+    external_player_id: str = Field(min_length=1, max_length=100)
     currency: CurrencyCode
 
 

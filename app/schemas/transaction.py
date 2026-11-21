@@ -43,15 +43,13 @@ class BaseTransactionRequest(APIModel):
 
     currency: CurrencyCode
 
-    game_external_id: str | None = Field(
-        default=None,
-        max_length=100,
-    )
-
     provider_reference: str | None = Field(
         default=None,
         max_length=150,
     )
+
+    provider_code: str | None = Field(default=None, min_length=1, max_length=50)
+    game_external_id: str | None = Field(default=None, max_length=100)
 
 
 class DebitRequest(BaseTransactionRequest):

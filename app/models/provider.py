@@ -22,6 +22,11 @@ class Provider(Base):
         nullable=False,
     )
 
+    base_url: Mapped[str | None] = mapped_column(
+        String(500),
+        nullable=True,
+    )
+
     name: Mapped[str] = mapped_column(
         String(150),
         nullable=False,

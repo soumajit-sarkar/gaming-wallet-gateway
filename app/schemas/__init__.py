@@ -1,3 +1,4 @@
+from app.schemas.player import PlayerCreateRequest, PlayerResponse
 from app.schemas.common import (
     APIModel,
     CurrencyCode,
@@ -39,6 +40,8 @@ __all__ = [
     "TransactionResponse",
     "TransactionStatus",
     "TransactionType",
+    "PlayerCreateRequest",
+    "PlayerResponse",
     "BalanceResponse",
     "WalletCreateRequest",
     "WalletResponse",

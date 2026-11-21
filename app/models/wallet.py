@@ -3,6 +3,7 @@ from datetime import datetime
 from decimal import Decimal
 
 from sqlalchemy import (
+    CheckConstraint,
     ForeignKey,
     Numeric,
     String,
@@ -57,6 +58,7 @@ class Wallet(Base):
     )
 
     __table_args__ = (
+        CheckConstraint("balance >= 0", name="ck_wallets_balance_nonnegative"),
         UniqueConstraint(
             "player_id",
             "currency",

@@ -1,0 +1,2 @@
+# Optional dependency used only when REDIS_URL is configured.
+redis>=5.2.1,<7.0

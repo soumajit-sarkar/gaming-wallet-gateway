@@ -1,3 +1,5 @@
+from app.models.outbox_event import OutboxEvent
+from app.models.processed_message import ProcessedMessage
 from app.models.client import Client
 from app.models.game import Game
 from app.models.player import Player
@@ -9,6 +11,8 @@ from app.models.idempotency_record import IdempotencyRecord
 
 __all__ = [
     "Client",
+    "OutboxEvent",
+    "ProcessedMessage",
     "Game",
     "Player",
     "Provider",

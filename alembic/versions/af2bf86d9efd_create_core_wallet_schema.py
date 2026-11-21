@@ -1,7 +1,7 @@
 """create core wallet schema
 
 Revision ID: af2bf86d9efd
-Revises: 
+Revises:
 Create Date: 2026-09-04 14:14:06.990096
 
 """
